@@ -1,0 +1,138 @@
+@use "./helpers" as *;
+@use "./variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.container {
+  width: 100%;
+  padding-inline: 5%;
+}
+
+section {
+  padding-block: 50px;
+}
+
+.main-title {
+  margin-inline: auto;
+  margin-bottom: 70px;
+  width: fit-content;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-inline: 20px;
+  border: 2px solid black;
+  position: relative;
+  cursor: default;
+  user-select: none;
+  z-index: 1;
+
+  @keyframes changeColorBorders {
+    from {
+      color: black;
+      border: 2px solid black;
+    }
+
+    to {
+      color: white;
+      border: 2px solid rgba(0, 0, 0, 0);
+    }
+  }
+
+  &:hover {
+    animation: changeColorBorders 0.2s linear forwards;
+    animation-delay: 0.6s;
+
+    &::before {
+      animation: moveLeftCircle 0.6s ease-in forwards;
+    }
+
+    &::after {
+      animation: moveRightCircle 0.6s ease-in forwards;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: 0.8s;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: $main-color;
+    border-radius: 50%;
+  }
+
+  &::before {
+    left: -30px;
+    @keyframes moveLeftCircle {
+      0% {
+        left: -30px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      100% {
+        left: 0;
+        width: 52%;
+        height: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+  &::after {
+    right: -30px;
+
+    @keyframes moveRightCircle {
+      0% {
+        right: -30px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      100% {
+        right: 0;
+        width: 52%;
+        height: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+}
