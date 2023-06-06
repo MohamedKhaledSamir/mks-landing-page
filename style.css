@@ -734,6 +734,26 @@ main .arrow-down {
 }
 #pricing-plans .plans .plan.advanced {
   transform: translateY(-20px);
+  position: relative;
+}
+#pricing-plans .plans .plan.advanced .special {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 30px;
+  height: 130px;
+  background-color: #2196f3;
+  color: white;
+  writing-mode: vertical-lr;
+  padding-top: 10px;
+}
+#pricing-plans .plans .plan.advanced .special::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: 15px solid transparent;
+  border-bottom-color: white;
 }
 #pricing-plans .plans .plan::before, #pricing-plans .plans .plan::after {
   content: "";
